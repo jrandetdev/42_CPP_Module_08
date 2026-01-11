@@ -8,7 +8,11 @@
 template <typename T>
 void easyfind(T firstparam, int secondparam)
 {
-
+	// first param will be of any type of container from the std library
+	// then insead of doing a for loop we need to use the algorithms provided in the <algorithm> library
+	// no C like programming and don't forget this is a function or class?
+	// need to declare the right one in the hpp and tpp file and include tpp file below
+	// all functions that do not modify something need to be in const
 };
 
 
