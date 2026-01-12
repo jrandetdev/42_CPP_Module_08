@@ -41,12 +41,6 @@ Containers usually contain a homogeneous type of data (the classic built in type
 
 containers are part of the C++ Container library that implement common types of containers. A class type that implements a container is called a container class. in C++, only the containers in the ciontainers liubrary are considered to be containers in c++. In C++, containers must be class types, and fulfill a set of requirements. They need to implement certain member functions. std::string is not a container, but it does most of the requirements so it is considered as a `pseudo-container`.
 
-- 	(C++11) fixed size contiguopus array
-- *vector*	resizeable contiguous array
-- 	double ended queue
-- 	list singly linked list
-- *list*	double linked list 
-
 |  container  | specifics |
 | :--------: | :-------: |
 | *array* | fixed size contiguopus array |
@@ -55,12 +49,37 @@ containers are part of the C++ Container library that implement common types of 
 | *forward_list* | singly linked list |
 | *list* | singly linked list |
 
+## Vectors
 
+- elements stored contigously meaning elements can be accessed with iterator, but also using offsets to regular pointers to elements. A pointer to an element of a vector may be passed to any functiopn that exoects a poiinter to an element of an array.
+- storage is automatically handled, expanded when needed. this means they occupy more space than traditional arrays. They only add additional memory when the additional memory requested is exhausted, not whenever an element is added to an array.
+- Total amount of allocated memory can be optained using the .capacity() member funbction-. 
 
 vectors automatically grow when elements are added beyond its current capacity. 
 - a programer does not need to worry about maitaining the capacity or reallocating it, or initialising extra space. 
 - The reallocation (doubling in memory) is a bit costly it terms of operations. If too costly, use array
 - They support bound checking with v.at(i) index i and vector v.
+- all member functions are constexpr: meaning it is possible to create and use std::vector objects in the evaluation of constant expressions.
+- the vector objects however are nopt because they need to be dynamically allocated and it must be released iun the same evaluation of constant expressions.
+
+Iterators can become invalidated after certain operations, meaning they can be invalid or dangerous to use. Generally, all the read opperations like size(), at(), and operator[] never invalidate an operator. 
+
+When you use push_back for example, if there is space, then only the end() pointer moves. But if there is no space, and the vector reallocates, then all iterators all point to a previously allocated old (freed) memory.
+
+Its prefered to get the iterator after elemnents have been pushed back.
+
+````
+std::vector<int> v;
+v.push_back(10);
+v.push_back(20);
+v.push_back(30);
+
+// Get iterator AFTER all insertions
+std::vector<int>::iterator it = v.begin();
+std::cout << *it;  // ✓ Safe
+```
+
+
 
 Iterators is like a pointer, and begin() and end() are methods of the container, not the iterartor. begin() returns iterator pointing to the first element. 
 end() does the same for the item PAST the final element of the container. 
