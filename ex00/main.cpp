@@ -6,6 +6,43 @@
 #include <exception>
 #include <algorithm>
 
+void	testListOperations()
+{
+	try {
+		std::cout << "\nTEST 2" << '\n';
+		int arr[] = {11, 23, 45, 89};
+		int n = sizeof(arr) / sizeof(arr[0]);
+		std::list<int> l(arr, arr + n);
+		l.insert(l.begin(), 5);
+		printELements(l);
+		l.erase(easyfind(l, 23));
+		printELements(l);
+		std::list<int>::iterator it = easyfind(l, 45);
+		std::cout << "In list, value " << *it << " found at " <<  &it << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+}
+
+void	testDequeOperations()
+{
+	try {
+		std::cout << "\nTEST 2" << '\n';
+		int arr[] = {11, 23, 45, 89};
+		int n = sizeof(arr) / sizeof(arr[0]);
+		std::deque<int> d(arr, arr + n);
+		d.insert(d.begin() + 2, 5);
+		printELements(d);
+		std::cout << " at index 2 using at() : " << d.at(2) << std::endl;
+		d.erase(easyfind(d, 23));
+		printELements(d);
+	}
+	catch (const std::exception& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+}
+
 void	testVectorOperations()
 {
 	try {
@@ -45,5 +82,7 @@ int main()
 {
 	basicTest();
 	testVectorOperations();
+	testDequeOperations();
+	testListOperations();
 	return 0;
 }

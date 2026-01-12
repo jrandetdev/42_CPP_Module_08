@@ -33,7 +33,7 @@ typename T::iterator easyfind(T& container, int element)
 template <typename T>
 void	printELements(T& container)
 {
-	for (typename T::iterator it = container.begin(); it < container.end(); ++it)
+	for (typename T::iterator it = container.begin(); it != container.end(); ++it)
 		std::cout << *it << std::endl;
 }
 
