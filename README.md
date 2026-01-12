@@ -49,11 +49,11 @@ containers are part of the C++ Container library that implement common types of 
 
 |  container  | specifics |
 | :--------: | :-------: |
-|  *array*  | fixed size contiguopus array |
-|  *vector*  | resizeable contiguous array |
+| *array* | fixed size contiguopus array |
+| *vector* | resizeable contiguous array |
 | *forward_list* | double ended queue |
-|  *forward_list* | singly linked list |
-|  *list* | singly linked list |
+| *forward_list* | singly linked list |
+| *list* | singly linked list |
 
 
 
