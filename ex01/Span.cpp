@@ -77,12 +77,15 @@ void	Span::printELements()
 		std::cout << *it << std::endl;
 }
 
+std::vector<int>	Span::getVec()
+{
+	return vec;
+}
+
 void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	unsigned int numberElementsToAdd = end - begin;
+	unsigned int numberElementsToAdd = std::distance(begin, end);
 	if ( this->vec.size() + numberElementsToAdd > this->capacity)
-	{
 		throw std::runtime_error("Range error, leaving program...");
-	}
 	this->vec.insert(vec.end(), begin, end);
 }
