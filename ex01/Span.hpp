@@ -8,6 +8,8 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+
+
 class Span
 {
 	private:
@@ -19,7 +21,11 @@ class Span
 		Span(const Span& other);
 		Span& operator=(const Span& other);
 		~Span();
-		void	addNumber(int n);
+		void addNumber(int n);
+		int	longestSpan();
+		int	shortestSpan();
+		void	printELements();
 };
+
 
 #endif
