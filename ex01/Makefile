@@ -1,11 +1,11 @@
-NAME		=	easyfind
+NAME		=	span
 DIR_SRC		=	./
 DIR_BUILD	=	./build
 CXX			=	c++
 CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -g -pedantic
 LDINCLUDE	=	-I$(DIR_SRC)
 
-SRCS		=	main.cpp
+SRCS		=	main.cpp Span.cpp
 SRCS_NAME	=	$(basename $(SRCS))
 OBJS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SRCS_NAME)))
 
