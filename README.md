@@ -82,6 +82,10 @@ std::cout << *it;  // ✓ Safe
 
 
 Iterators is like a pointer, and begin() and end() are methods of the container, not the iterartor. begin() returns iterator pointing to the first element. 
-end() does the same for the item PAST the final element of the container. 
+end() does the same for the item PAST the final element of the container.
+
+
+size() returns the number of elements inside of the container. 
+
 
 

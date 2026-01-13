@@ -5,6 +5,20 @@
 
 #include "Span.hpp"
 
+void	spanTest()
+{
+	try
+	{
+		std::cout << "\nTest 3 (should print an error)" << std::endl;
+		Span sp = Span(10);
+		std::vector<int> v2(5, 1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
 void	givenMain()
 {
 	std::cout << "\nTest 2 (given main)" << std::endl;
@@ -47,6 +61,6 @@ int main()
 {
 	basicTest();
 	givenMain();
-
+	spanTest();
 	return 0;
 }
