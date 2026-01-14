@@ -3,12 +3,12 @@
 
 Span::Span() : vec(), capacity(0)
 {
-	std::cout << "Default constructor called for Span class" << std::endl;
+	//std::cout << "Default constructor called for Span class" << std::endl;
 }
 
 Span::Span(unsigned int n) : vec(0), capacity(n)
 {
-	std::cout << "Constructor with unsigned int n called" << std::endl;
+	std::cout << "Capacity of the container is " << n << std::endl;
 }
 
 Span::Span(const Span& other) : vec(other.vec), capacity(other.capacity)
@@ -23,13 +23,13 @@ Span& Span::operator=(const Span& other)
 		this->vec = other.vec;
 		this->capacity = other.capacity;
 	}
-	std::cout << "Copy assignment consructor called" << std::endl;
+	//std::cout << "Copy assignment consructor called" << std::endl;
 	return *this;
 }
 
 Span::~Span()
 {
-	std::cout << "Default destructor called" << std::endl;
+	//std::cout << "Default destructor called" << std::endl;
 }
 
 void	Span::addNumber(int n)
@@ -37,7 +37,7 @@ void	Span::addNumber(int n)
 	if (vec.size() >= this->capacity)
 		throw std::out_of_range("Error, not enough capacity for an additional element!");
 	vec.push_back(n);
-	std::cout << "Successfully added a number to vec" << std::endl;
+	std::cout << "Successfully added " << n << " to vec" << std::endl;
 }
 
 /**
@@ -49,12 +49,13 @@ int	Span::shortestSpan()
 {
 	if (vec.empty())
 		throw std::runtime_error("Error! vector is empty!");
-	std::sort(vec.begin(), vec.end());
+	std::vector<int> sortedVec(vec);
+	std::sort(sortedVec.begin(), sortedVec.end());
 	int minDiff = std::numeric_limits<int>::max();
 	for (unsigned int i = 0; i < (vec.size() - 1); ++i)
 	{
-		if ((vec[i + 1] - vec[i]) < minDiff)
-			minDiff = (vec[i + 1] - vec[i]);
+		if ((sortedVec[i + 1] - sortedVec[i]) < minDiff)
+			minDiff = (sortedVec[i + 1] - sortedVec[i]);
 	}
 	return minDiff;
 }
@@ -75,17 +76,18 @@ void	Span::printELements()
 {
 	for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
 		std::cout << *it << std::endl;
+	std::cout << '\n';
 }
 
-std::vector<int>	Span::getVec()
-{
-	return vec;
-}
+std::vector<int>	Span::getVec() { return vec; }
+
+unsigned int	Span::getAssignedCapacity() { return capacity; }
 
 void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	unsigned int numberElementsToAdd = std::distance(begin, end);
 	if ( this->vec.size() + numberElementsToAdd > this->capacity)
-		throw std::runtime_error("Range error, leaving program...");
+		throw std::runtime_error("Error! addRange: the number of numbers to add surpasses the container's cpacity");
 	this->vec.insert(vec.end(), begin, end);
+	std::cout << "successfully added " << numberElementsToAdd << " elements to the container" << std::endl;
 }

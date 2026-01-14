@@ -2,10 +2,10 @@ NAME		=	span
 DIR_SRC		=	./
 DIR_BUILD	=	./build
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -g -pedantic
+CXXFLAGS	=	-std=c++98 -Wall -Werror -Wextra -pedantic 
 LDINCLUDE	=	-I$(DIR_SRC)
 
-SRCS		=	main.cpp Span.cpp
+SRCS		=	Span.cpp main.cpp
 SRCS_NAME	=	$(basename $(SRCS))
 OBJS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SRCS_NAME)))
 

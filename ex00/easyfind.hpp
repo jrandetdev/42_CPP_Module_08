@@ -22,16 +22,16 @@ typename T::iterator easyfind(T& container, int element)
 	// find returns an iterator pointing to the value element otherwise returns end iterator
 	typename T::iterator result = std::find(container.begin(), container.end(), element);
 	if (result == container.end())
-		throw std::runtime_error("Error! No occurence of the second parameter has been found in the container given.");
+		throw std::runtime_error("Easyfind: Error! No occurence of the second parameter has been found in the container given.");
 	else
 	{
-		std::cout << "Success! Occurence has been found."  << std::endl; 
+		std::cout << "Easyfind: Occurence of " << element << " has been found in container" << std::endl; 
 		return result;
 	}
 }
 
 template <typename T>
-void	printELements(T& container)
+void	printElements(T& container)
 {
 	for (typename T::iterator it = container.begin(); it != container.end(); ++it)
 		std::cout << *it << std::endl;
