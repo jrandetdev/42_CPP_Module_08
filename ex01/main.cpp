@@ -116,5 +116,5 @@ int main()
 	addRangeTest();
 	hugeSpantest();
 	negativeTest();
-;	return 0;
+	return 0;
 }
